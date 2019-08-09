@@ -1316,6 +1316,14 @@ static int stk500v2_open(PROGRAMMER * pgm, char * port)
     return -1;
   }
 
+  /* Clear DTR and RTS to unload the RESET capacitor 
+   * (for example in Arduino) */
+  serial_set_dtr_rts(&pgm->fd, 0);
+  usleep(50*1000);
+  /* Set DTR and RTS back to high */
+  serial_set_dtr_rts(&pgm->fd, 1);
+  usleep(50*1000);
+  
   /*
    * drain any extraneous input
    */
