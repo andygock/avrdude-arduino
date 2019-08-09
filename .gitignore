@@ -1,0 +1,10 @@
+*.hex
+*.exe
+config.log
+config.status
+**/Makefile
+ac_cfg.h
+avrdude.conf
+avrdude.conf.tmp
+stamp-*
+windows/.deps/
